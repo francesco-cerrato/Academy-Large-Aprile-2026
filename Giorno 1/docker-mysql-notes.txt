@@ -21,3 +21,6 @@ docker restart mysql-db
 docker volume ls
 
 docker ps
+
+CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS         PORTS                                         NAMES
+37612a747e8e   mysql:latest   "docker-entrypoint.s…"   46 minutes ago   Up 4 minutes   0.0.0.0:3306->3306/tcp, [::]:3306->3306/tcp   mysql-db
