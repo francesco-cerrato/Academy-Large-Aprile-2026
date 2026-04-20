@@ -1,5 +1,8 @@
 Primo progetto Git - Academy 2026
 
+
+
+\# Storia del progetto
 acb21b9 (HEAD -> main) Conflitto merge fixed
 0224651 (feature/saluto) Modifiche al file saluto.txt nel branch feature/saluto
 852ab7f Modifiche al file saluto.txt nel branch main
