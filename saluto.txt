@@ -1,2 +1,5 @@
 Ciao dal branch feature/saluto!
+HEAD
 Modificato in branch main
+Modifiche effettuate nel branch feature/saluto
+feature/saluto
