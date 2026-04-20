@@ -1,0 +1,23 @@
+docker --version
+
+docker pull MySQL
+
+docker images
+
+docker volume create db_data
+
+docker volume inspect db_data
+
+docker run -d --name mysql-db -e MYSQL_ROOT_PASSWORD=123 -e MYSQL_DATABASE=academy_db -e MYSQL_USER=academy_user -e MYSQL_PASSWORD=321 -p 3306:3306 -v db_data:/vol_academy -d mysql:latest
+
+docker ps
+
+docker logs mysql-db
+
+docker stop mysql-db
+
+docker restart mysql-db
+
+docker volume ls
+
+docker ps
