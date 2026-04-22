@@ -1,0 +1,44 @@
+Un Web Container, in un'applicazione JEE (Java Enterprise Edition) è un ambiente di runtime* di un web/applicazione server che fornisce tutto il necessario affinché i componenti web funzionino correttamente. I componenti web potrebbero essere Servlet e JPS - JavaServer Pages.
+*Un ambiente di runtime è un software in grado di gestire e fornire tutte le risorse necessarie (librerie, gestione memoria, accesso hardware) per eseguire un programma. Funziona da intermediario tra codice e sistema operativo.
+Un esempio di web container è Apache Tomcat, server web open source utile per eseguire applicazioni web basate su Java.
+
+Un sito web statico, composto da HTML, CSS e JS, non genera alcun contenuto dinamico ossia mostra delle pagine html statiche uguali per tutti gli utenti. Un sito web dinamico invece mostra/restituisce, tramite linguaggi lato server, pagine in tempo reale. Tali pagine variano per ogni client/utente che vi accede il quale può interagire con risorse come database, data e orario corrente ecc.
+Un esempio di sito web statico potrebbe essere il sito web di un ristorante che mostra a tutti gli utenti il proprio menu e i propri prezzi. In caso di variazione dei prezzi è compito dello sviluppatore web modificare la pagina statica in HTML.
+Un esempio invece di sito web dinamico potrebbe essere un qualsiasi e-commerce, come ad esempio Amazon. I prezzi e i contenuti del carrello variano in base alle scelte dell'utente.
+
+Un file WAR è un formato di archivio compresso al cui interno sono impacchettati applicazioni web basate su tecnologie Java. Contiene al suo interno tutto il necessario per far funzionare un'applicazione web, sia lato server (come servlet) sia lato client (come HTML). Secondo le specifiche di Jakarta EE il suo interno è organizzato secondo questa gerarchia:
+-WEB-INF/classes/: Contiene le classi java dell'applicazione
+-WEB-INF/lib/: Contiene le librerie esterne (file JAR) utilizzate dall'applicazione
+-WEB-INF/web.xml: E' il file descrittore di deployment (rilascio, installazione e messa in esercizio) di un app web java. Semplicemente è utile per istruire il server web (come Apache Tomcat) su come configurare, gestire e far funzionare l'app java web.
+-File statici: File della struttura statica del sito web scritti in HTML,CSS e JS.
+E' utile per garantire un deployment semplificato (consente di distribuire l'intera applicazione copiando semplicemente un file in una cartella specifica del server) per la sua portabilità (essendo un archivio facilita lo spostamento dell'app tra diversi ambienti), facilità di aggiornamento.
+
+Il protocollo HTTP (HyperText Transfer Protocol) è il sistema standard alla base del World Wide Web utilizzato per la trasmissione di dati  (pagine HTML) tra un client (utente) e server web.
+Il ciclo request-response è il seguente: L'utente digita un URL o clicca su un link, il browser crea un messaggio di richiesta HTTP (es. metodi GET e POST), il messaggio include l'indirizzo della risorsa, le preferenze del browser e informazioni sul sistema.
+Tale richiesta viaggia fino al server web il quale avrà il compito di elaborare la richiesta (cerca la risorsa tipo file HTML) e invia una risposta HTTP che contiene al suo interno un codice di stato (es 200 OK se ha avuto successo oppure 404 Not Found se la risorsa non esiste) e i dati richiesti dal client.
+
+Il file web.xml (chiamato anche Deployment Descriptor) in un'applicazione Java EE (JEE) serve a configurare come l'applicazione web deve comportarsi e come deve essere gestita dal server. Potrebbe essere vista come il manuale di istruzioni di una applicazione web.
+Esempio: 
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         version="3.1">
+
+    <servlet>
+        <servlet-name>ServletSaluto</servlet-name>
+        <servlet-class>com.esempio.MiaServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ServletSaluto</servlet-name>
+        <url-pattern>/ciao</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+ 
+Il file web.xml delle righe precedenti esempio mappa una Servlet (com.esempio.MiaServlet) all'URL /ciao
+
+Il cambiamento tra JEE e Jakarta EE è avvenuto a causa di una transizione di proprietà tra Oracle e la Eclipse Foundation..
+Il cambiamento è avvenuto per motivi legali e di gestione, non di marketing: 
+Nel 2017, Oracle ha deciso di cedere la gestione di Java EE alla Eclipse Foundation per renderla più aperta e veloce.
+Oracle ha mantenuto i diritti sul nome "Java". La Eclipse Foundation non poteva quindi chiamare il prodotto "Java".
+Dopo un sondaggio comunitario, è stato scelto "Jakarta EE", nome che era stato precedentemente utilizzato per altri progetti Apache.
