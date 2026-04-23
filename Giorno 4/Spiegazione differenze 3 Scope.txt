@@ -1,0 +1,5 @@
+Nella servlet che gestisce il "request" scope la stringa di stampa si resetta ogni volta che la pagina viene aggiornata. Tra il browser 1 e il browser 2 non vi è alcuna differenza... Entrambe le finestre mostreranno sempre "1" (o il valore iniziale) ad ogni caricamento, poiché la richiesta muore non appena la pagina viene servita.
+
+In /pagina, servlet che gestisce lo scope "application" il contatore aumenta globalmente, ossia in entrambi i browser attivi. Se il browser 1 ha il contatore 1 al refresh della pagina al browser 2 il contatore passerà a 2
+
+In /utente, servlet che gestisce lo scope "session" il contatore considera esclusivamente il singolo browser. Dunque il browser 1 e il browser 2 avranno due contatori differenti. Se al browser 1 ad esempio ricaricassi la pagina 10 volte il contatore arriverà a 10. Allo spegnimento del singolo browser la servlet termina e dunque il contatore tornerà a 0.
