@@ -1,0 +1,89 @@
+body
+{
+    /* 
+        Imposta il font predefinito (in questo caso "sans-serif") 
+        per ogni elemento appartenente al body della pagina HTML
+    */
+    font-family: sans-serif;
+
+    background-color: #f5f5f5;
+}
+
+/*
+    Il carattere "*" è il selettore universale. 
+    In parole povere indica lo stile da applicare a tutti gli elementi della pagina HTML 
+    */
+*
+{
+    margin: 0; /* La proprietà "margin" è utilizzata per creare spazio esterno attorno agli elementi*/
+    padding: 0; /* La proprietà "padding" è utilizzata per creare spazio interno tra il contenuto del suo elemento e il suo bordo*/
+    /* 
+        box-sizing: border-box; 
+        Questa proprietà omessa dovrebbe definire le modalità di calcolo della larghezza (width) e 
+        dell'altezza (height). Nel particolare, il "border-box" indica al browser di includere padding
+        e bordi all'interno della larghezza e della lunghezza.
+        Tramite questa proprietà si evita che l'elemento si allarghi oltre le misure impostate
+    */ 
+}
+
+.container
+{
+   display: flex; /* Abilita Flexbox nel container div*/
+
+    /* 
+        Questa proprietà specifica che il contenuto del Flexbox deve essere posizionato
+        in colonna (uno sotto l'altro). Di default CSS lo imposta in riga
+    */
+  flex-direction: column; 
+ 
+  background-color: yellow; /* Ho voluto impostare il colore giallo come background-color per evidenziare il FlexBox */
+  gap: 20px; /* Il gap, in questo caso in pixel, specifica la distanza tra tutti gli elementi (ognuno distanziato 20px dall'altro)*/
+  max-width: 600px; /* Impostata una larghezza massima del FlexBox di 600 pixel*/
+  margin: 20px auto; /* Imposta il margine (spazio esterno) superiore/inferiore di 20px. 
+  A destra e a sinistra è impostato come "auto" per centrare il contaienr nel browser*/
+
+}
+
+/* 
+    Questa parte di codice seleziona l'elemento figlio diretto, in questo caso
+    l'elemento <footer> figlio diretto di un elemento con classe "container".
+    (Nel file HTML vi è un unico elemento con classe .contaier, 
+    ossia l'elemento div appartenente al main)
+
+    All'elemento footer è stato impostato un margine superiore (top) di 10px.
+    10px tra il bordo superiore del footer e il bordo inferiore dell'elemento soprastante
+*/
+.container > footer
+{
+    margin-top: 10px;
+    background-color: red;
+}
+
+.list_card
+{
+    margin: 10px; /* Imposta margine esterno (spazio esterno) di 10 pixel su tutti i lati */
+    padding: 10px; /* Imposta spazio interno (padding) di 10 pixel tra il bordo e il contenuto all'intero dell'elemento */
+    list-style: none; /* Questa proprietà CSS rimuove i simboli di elenco (pallini) dalla ul*/
+    border: 1px solid; /* Questa proprietà aggiunge un bordo solido, spessore 1 pixel con colore predefinito (dopo solid andrebbe specificato il colore)*/
+    border-radius: 20px; /* Arrotonda gli angoli del bordo con un raggio di 20px*/
+    text-align: center; /*Allinea il testo di ogni elemento (in questo caso ogni li) al centro */
+    transition: all 0.3s ease; /* Questa proprietà shorthand rende fluido e animato il passaggio del cursore sopra la card*/
+}
+
+/* :hover è una pseudo-classe che permette di applicare stili specifici a un elemento quando il puntatore del mouse è su di esso*/
+.list_card:hover
+{
+    /* Il colore di sfondo ("background-color") diventa orange quando avviene l'evento :hover */
+    background-color: orange;
+    transform: scale(1.1); /* Quando avviene l'evento :hover, questo codice ingrandisce leggermente l'elemento card (li) del 10%*/
+}
+
+#Heading1
+{
+    text-align: center;
+}
+
+#Heading2
+{
+    text-align: center;
+}
