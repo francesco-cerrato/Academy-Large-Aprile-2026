@@ -1,0 +1,132 @@
+{
+  "info": {
+    "_postman_id": "a172b159-10a7-4d47-ae37-084f2d7261b4",
+    "name": "Collection Studenti",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54539515",
+    "_collection_link": "https://go.postman.co/collection/54539515-a172b159-10a7-4d47-ae37-084f2d7261b4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET all",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/studenti",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "studenti"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "GET by id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/studenti/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "studenti",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "POST",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Mario\",\r\n  \"cognome\": \"Rossi\",\r\n  \"email\": \"mario@email.com\",\r\n  \"dataNascita\": \"2000-01-01\",\r\n  \"corsoLaurea\": \"Informatica\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/studenti",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "studenti"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "PUT",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nome\": \"Mario\",\r\n  \"cognome\": \"Verdi\",\r\n  \"email\": \"mario@email.com\",\r\n  \"dataNascita\": \"2000-01-01\",\r\n  \"corsoLaurea\": \"Matematica\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/studenti/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "studenti",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "DELETE",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/api/studenti/1",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "studenti",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
