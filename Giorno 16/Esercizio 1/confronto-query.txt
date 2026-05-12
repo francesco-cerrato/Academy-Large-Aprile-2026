@@ -1,0 +1,173 @@
+Confronto FetchType.EAGER con FetchType.LAZY alla chiamata findAll() in CorsoLaureaController.java:
+
+
+FetchType.EAGER: Hibernate recupera tutti i corsi e, per ogni corso, recupera immediatamente tutti gli studenti associati.
+
+FetchType.LAZY: Hibernate recupera inizialmente solo i dati della tabella CORSI_LAUREA. Gli studenti non vengono toccati.
+
+
+
+CONSOLE CON FetchType.EAGER (findAll()):
+Quando viene invocato il metodo findAll() sui corsi, Hibernate recupera prima la lista dei corsi e immediatamente dopo, per ogni singolo corso trovato, esegue una query aggiuntiva per recuperare gli studenti associati (e i relativi profili tramite left join).
+
+2026-05-12T15:25:28.629+02:00 DEBUG 11364 --- [progetto-giorno-13] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        cl1_0.id,
+        cl1_0.dipartimento,
+        cl1_0.durata_anni,
+        cl1_0.nome 
+    from
+        corsi_laurea cl1_0
+Hibernate: 
+    select
+        cl1_0.id,
+        cl1_0.dipartimento,
+        cl1_0.durata_anni,
+        cl1_0.nome 
+    from
+        corsi_laurea cl1_0
+
+2026-05-12T15:25:28.643+02:00 DEBUG 11364 --- [progetto-giorno-13] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        s1_0.corso_laurea_id,
+        s1_0.id,
+        s1_0.cognome,
+        s1_0.data_nascita,
+        s1_0.email,
+        s1_0.nome,
+        p1_0.id,
+        p1_0.bio,
+        p1_0.data_creazione,
+        p1_0.foto_url,
+        p1_0.linkedin 
+    from
+        studenti s1_0 
+    left join
+        profilostudenti p1_0 
+            on p1_0.id=s1_0.profilo_id 
+    where
+        s1_0.corso_laurea_id=?
+Hibernate: 
+    select
+        s1_0.corso_laurea_id,
+        s1_0.id,
+        s1_0.cognome,
+        s1_0.data_nascita,
+        s1_0.email,
+        s1_0.nome,
+        p1_0.id,
+        p1_0.bio,
+        p1_0.data_creazione,
+        p1_0.foto_url,
+        p1_0.linkedin 
+    from
+        studenti s1_0 
+    left join
+        profilostudenti p1_0 
+            on p1_0.id=s1_0.profilo_id 
+    where
+        s1_0.corso_laurea_id=?
+
+2026-05-12T15:25:28.647+02:00 DEBUG 11364 --- [progetto-giorno-13] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        s1_0.corso_laurea_id,
+        s1_0.id,
+        s1_0.cognome,
+        s1_0.data_nascita,
+        s1_0.email,
+        s1_0.nome,
+        p1_0.id,
+        p1_0.bio,
+        p1_0.data_creazione,
+        p1_0.foto_url,
+        p1_0.linkedin 
+    from
+        studenti s1_0 
+    left join
+        profilostudenti p1_0 
+            on p1_0.id=s1_0.profilo_id 
+    where
+        s1_0.corso_laurea_id=?
+Hibernate: 
+    select
+        s1_0.corso_laurea_id,
+        s1_0.id,
+        s1_0.cognome,
+        s1_0.data_nascita,
+        s1_0.email,
+        s1_0.nome,
+        p1_0.id,
+        p1_0.bio,
+        p1_0.data_creazione,
+        p1_0.foto_url,
+        p1_0.linkedin 
+    from
+        studenti s1_0 
+    left join
+        profilostudenti p1_0 
+            on p1_0.id=s1_0.profilo_id 
+    where
+        s1_0.corso_laurea_id=?
+
+2026-05-12T15:25:28.649+02:00 DEBUG 11364 --- [progetto-giorno-13] [nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        s1_0.corso_laurea_id,
+        s1_0.id,
+        s1_0.cognome,
+        s1_0.data_nascita,
+        s1_0.email,
+        s1_0.nome,
+        p1_0.id,
+        p1_0.bio,
+        p1_0.data_creazione,
+        p1_0.foto_url,
+        p1_0.linkedin 
+    from
+        studenti s1_0 
+    left join
+        profilostudenti p1_0 
+            on p1_0.id=s1_0.profilo_id 
+    where
+        s1_0.corso_laurea_id=?
+Hibernate: 
+    select
+        s1_0.corso_laurea_id,
+        s1_0.id,
+        s1_0.cognome,
+        s1_0.data_nascita,
+        s1_0.email,
+        s1_0.nome,
+        p1_0.id,
+        p1_0.bio,
+        p1_0.data_creazione,
+        p1_0.foto_url,
+        p1_0.linkedin 
+    from
+        studenti s1_0 
+    left join
+        profilostudenti p1_0 
+            on p1_0.id=s1_0.profilo_id 
+    where
+        s1_0.corso_laurea_id=?
+
+
+CONSOLE CON FetchType.LAZY (findAll()):
+Quando viene invocato il metodo findAll() sui corsi, Hibernate recupera solamente i dati della tabella corsi_laurea. Poiché la relazione è impostata su LAZY e la lista degli studenti non viene richiamata esplicitamente, Hibernate evita di interrogare la tabella degli studenti
+
+2026-05-12T15:29:12.570+02:00 DEBUG 23356 --- [progetto-giorno-13] [nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        cl1_0.id,
+        cl1_0.dipartimento,
+        cl1_0.durata_anni,
+        cl1_0.nome 
+    from
+        corsi_laurea cl1_0
+Hibernate: 
+    select
+        cl1_0.id,
+        cl1_0.dipartimento,
+        cl1_0.durata_anni,
+        cl1_0.nome 
+    from
+        corsi_laurea cl1_0
+
